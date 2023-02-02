@@ -156,6 +156,7 @@ enum LogPacketType {
 
     // 5G MAC
     NR_MAC_UL_Physical_Channel_Schedule_Report = 0xB883,
+    NR_MAC_PDSCH_Status = 0xB887,
     NR_MAC_PDSCH_Stats = 0xB888,
     NR_MAC_RACH_Trigger= 0xB889,
     NR_MAC_UL_TB_Stats=0xB881, 
@@ -400,6 +401,8 @@ const ValueName LogPacketTypeID_To_Name [] = {
         "5G_NR_MAC_UL_TB_Stats", true},
     {NR_MAC_UL_Physical_Channel_Schedule_Report,
         "5G_NR_MAC_UL_Physical_Channel_Schedule_Report", true},
+    {NR_MAC_PDSCH_Status,
+        "5G_NR_MAC_PDSCH_Status", true},
     {NR_MAC_PDSCH_Stats,
         "5G_NR_MAC_PDSCH_Stats", true},
     {NR_MAC_RACH_Trigger,

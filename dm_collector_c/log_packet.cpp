@@ -3,6 +3,7 @@
  * Implements log packet message decoding.
  */
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include <datetime.h>
 #include <fstream>
@@ -62,6 +63,7 @@
 #include "nr_mac_ul_tb_stats.h"
 #include "nr_ml1_serving_cell_beam_mngt.h"
 #include "nr_mac_pdsch_stats.h"
+#include "nr_mac_pdsch_status.h"
 #include "nr_mac_ul_physical_channel_schedule_report.h"
 #include "nr_l2_ul_tb.h"
 #include "nr_l2_ul_bsr.h"
@@ -11642,6 +11644,15 @@ on_demand_decode (const char *b, size_t length, LogPacketType type_id, PyObject*
                                      b, offset, length, result);
 
             offset += _decode_nr_mac_pdsch_stats_subpkt(b, offset, length, result);
+
+            break;
+        
+        case NR_MAC_PDSCH_Status:
+            offset += _decode_by_fmt(NrMacPdschStatus_Fmt,
+                                     ARRAY_SIZE(NrMacPdschStatus_Fmt, Fmt),
+                                     b, offset, length, result);
+
+            offset += _decode_nr_mac_pdsch_status_subpkt(b, offset, length, result);
 
             break;
 
