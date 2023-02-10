@@ -1,63 +1,11 @@
-MobileInsight
+nr_mac_pdsch_status 
 ==============
 
-## Introduction
 
-[MobileInsight](http://mobileinsight.net) enables below-IP, fine-grained mobile network analytics on end device. It is a cross-platform package for mobile network monitoring and analysis, originally developed by researchers at [UCLA Wireless Networking Group (WiNG)](http://metro.cs.ucla.edu) and Purdue Peng Group, licensed under Apache Licence 2.0.
+## How to Run
 
-MobileInsight provides low-level monitors for mobile network, and extensible event-driven analyzers for major cellular protocols, such as radio resource control (RRC), mobility management (EMM), and session management (ESM). You can also define your own analyzers for customized usage.
+Simply run `./install-ubuntu.sh` to recompile and run offline-analysis-example.py, offline-analysis-example.py will take the log file, using 5G_NR_MAC_PDSCH_Status decoder to decode the message and give the result to a display all analyzer, outputing decoded packets in python dict format.
 
-Using MobileInsight, users can declare a monitor to track the network status and call ananlyzer for online/offline analysis. See [overview](http://mobileinsight.net/developer-guide.html) on how this works, and [examples](http://mobileinsight.net/tutorials.html) on how to use it.
+a sample decoded output will look like
 
-
-## Installation
-
-Currently MobileInsight supports installation on macOS and Ubuntu/Debian systems. To install it on Windows, please use our all-in-one virtual machine from [`mobileinsight-dev`](https://github.com/mobile-insight/mobileinsight-dev).
-
-
-
-First clone or download the git repository to user local folder.
-
-
-
-Next, run installation script (but __do not__ execute with root priviledge!):
-
-    ./install-macos.sh (macOS)
-    ./install-ubuntu.sh (Ubuntu)
-
-The install script will install MobileInsight package to your `PYTHONPATH`, install MobileInsight GUI to `/usr/local/bin/mi-gui`, and run an offline analysis example at the end.
-
-
-## Dependencies
-
-MobileInsight builds on top of `pyserial` and `crcmod`, which can be installed using `pip`:
-
-    pip install pyserial
-    pip install crcmod
-
-The GUI of MobileInsight requires `matplotlib` and `wxPython`. `matplotlib` can be installed via `pip`:
-
-    pip install matplotlib
-
-`wxPython` can be installed using Homebrew (macOS) or apt-get (Ubuntu).
-
-    brew install wxpython (macOS)
-    apt-get install python-wxgtk3.0 (Ubuntu)
-
-
-## Upgrade to New Version
-
-Old version of `mobileInsight-core` may have installed Wireshark and Glib libraries under the `/usr/lib` folder. The installation script will auto handle the uninstallation of the old version. If you encounter issues, you may execute the uninstallation script manually to remove them. Please run the uninstallation script with __root__ priviledge to perform proper clean up.
-
-    sudo ./uninstall.sh
-
-
-## How to Contribute
-
-We love pull requests and discussing novel ideas. You can open issues here to report bugs. Feel free to improve MobileInsight and become a collaborator if you are interested.
-
-The following Slack group is used exclusively for discussions about developing the MobileInsight and its sister projects:
-
-+ Email: support@mobileinsight.net
-
-For other advanced topics, please refer to the wiki and the [MobileInsight website](http://mobileinsight.net).
+`{'log_msg_len': 56, 'type_id': '5G_NR_MAC_PDSCH_Status', 'timestamp': datetime.datetime(2022, 11, 1, 21, 19, 42, 81765), 'Minor Version': 5, 'Major Version': 2, 'Sleep': 0, 'Beam Change': 0, 'Signal Change': 0, 'DL Dynamic Cfg Change': 0, 'DL Config': 0, 'UL Config': 0, 'Log Fields Change BMask': 0, 'Sub ID ': 0, 'Num Records': 1, 'Records': [{'Slot': 6, 'Numerology': 0, 'Frame': 255, 'Num PDSCH Status': 1, 'Status[0]': {'Carrier ID': 0, 'Tech ID to Variant Id': 35192577, 'Physical cell ID': 537, 'EARFCN': 174770, 'TB Index': 0, 'TB Size': 277, 'SCS MU': 0, 'MCS': 7, 'Num Rbs': 4, 'RV': 0, 'HARQ Or MBSFN Area Id': 8, 'RNTI Type': 0, 'K1 Or PMCH ID': 4, 'TCI': 0, 'Num Layers': 2, 'Iteration Index': 0, 'CRC Status': 1, 'New Tx Flag': 1, 'NDI': 0, 'Discard Mode': 0, 'Bypass Decode': 0, 'Bypass HARQ': 0, 'Num ReTx': 0, 'HD Onload Timeout': 0, 'HARQ Onload Timeout': 0, 'HD Offload Timeout': 0, 'HARQ Offload Timeout': 0, 'Did Recomb': 0, 'Is IOVec Valid': 1, 'Mod Type': 1, 'High Clock Mode': 0, 'Num RX': 0, 'RX Antenna Mapping': 0}}]}`
